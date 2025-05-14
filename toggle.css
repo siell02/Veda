@@ -1,0 +1,50 @@
+body.light-mode {
+  background-color: #FCE8EE; /* soft rose blush */
+  color: #3A0519;
+}
+
+body.light-mode header,
+body.light-mode footer {
+  background-color: #F6D7DF; /* muted mauve */
+  color: #3A0519;
+  box-shadow: 0 4px 12px rgba(170, 70, 100, 0.2);
+}
+
+body.light-mode .product-card {
+  background-color: #FFF0F4; /* soft warm white */
+  color: #3A0519;
+  box-shadow: 0 6px 12px rgba(200, 100, 130, 0.15);
+}
+
+body.light-mode .product-card:hover {
+  background-color: #F9CEDB; /* light pink hover */
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(239, 136, 173, 0.3);
+}
+
+body.light-mode .product-info h2,
+body.light-mode .price {
+  color: #3A0519;
+}
+
+body.light-mode .btn {
+  background-color: #EF88AD;
+  color: white;
+}
+
+body.light-mode .btn:hover {
+  background-color: #3A0519;
+  color: #EF88AD;
+}
+
+body.light-mode .home-icon svg {
+  fill: #3A0519;
+}
+
+body.light-mode .home-icon:hover svg {
+  fill: #EF88AD;
+  transform: scale(1.15);
+  text-shadow: 0 0 6px rgba(239, 136, 173, 0.5);
+}
+
+  

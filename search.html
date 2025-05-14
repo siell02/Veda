@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Search - VÈDA FASHION</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><link rel="stylesheet" href="social.css"><link rel="stylesheet" href="toggle.css"><style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Merriweather', serif;
+      background-color: #4C2B37;
+      color: #fff;
+    }
+
+    header {
+      background-color: #3A0519;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.5rem;
+    }
+
+    .search-container {
+      background-color: #4C2B37;
+      padding: 20px 40px;
+      text-align: center;
+    }
+
+    .search-container input[type="text"] {
+      width: 100%;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 25px;
+      border: none;
+      font-family: 'Merriweather', serif;
+      outline: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 30px 20px;
+      gap: 20px;
+    }
+
+    .product-card {
+      background-color: #3A0519;
+      border-radius: 10px;
+      width: 220px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      overflow: hidden;
+      transition: transform 0.2s;
+      color: white;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card a {
+      text-decoration: none;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+.product-info {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically */
+  align-items: center;     /* Centers content horizontally */
+  height: 100%;
+  text-align: center;
+}
+
+.product-info h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+}
+
+
+         .price { font-weight: 600; margin: 10px 0; color:  white; text-align: center; font-family: 'Merriweather', serif; }
+    }
+
+    .btn-group {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .btn {
+      background-color: white;
+      border: none;
+      color: #3A0519;
+      padding: 8px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-family: 'Merriweather', serif;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .btn:hover {
+      background-color:  #4C2B37;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #3A0519;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+    }
+
+    .voice-active i {
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    
+    #voiceSearchBtn i {
+      font-size: 20px;
+      color: #4C2B37; 
+    }
+
+/* Light Mode CSS */
+body.light-mode {
+  background-color: #FCE8EE; /* soft rose blush */
+  color: #3A0519; /* dark mauve */
+}
+
+body.light-mode header {
+  background-color: #F6D7DF; /* muted mauve */
+  color: #3A0519;
+  padding: 20px 40px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(170, 70, 100, 0.2);
+}
+
+body.light-mode header h1 {
+  font-family: 'Lora', serif;
+  font-size: 2.5rem;
+}
+
+body.light-mode .search-container {
+  background-color: #FCE8EE; /* soft rose blush */
+  padding: 20px 40px;
+  text-align: center;
+}
+
+body.light-mode .search-container input[type="text"] {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 25px;
+  border: none;
+  font-family: 'Merriweather', serif;
+  outline: none;
+  background-color: #FFF0F4; /* soft warm white */
+}
+
+body.light-mode .search-container input[type="text"]:focus {
+  box-shadow: 0 0 5px rgba(170, 70, 100, 0.3);
+}
+
+body.light-mode .products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 30px 20px;
+  gap: 20px;
+}
+
+body.light-mode .product-card {
+  background-color: #FFF0F4; /* soft warm white */
+  border-radius: 10px;
+  width: 220px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(200, 100, 130, 0.15);
+  overflow: hidden;
+  transition: transform 0.2s;
+  color: #3A0519;
+}
+
+body.light-mode .product-card:hover {
+  transform: scale(1.05);
+  background-color: #F9CEDB; /* light pink hover */
+  box-shadow: 0 12px 24px rgba(239, 136, 173, 0.3);
+}
+
+body.light-mode .product-card a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+body.light-mode .product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+body.light-mode .product-info {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+body.light-mode .product-info h2 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  min-height: 45px;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+}
+
+body.light-mode .price {
+  font-weight: bold;
+  margin: 10px 0;
+  color: #3A0519;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+}
+
+body.light-mode .btn-group {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+body.light-mode .btn {
+  background-color: #EF88AD; /* soft pink */
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: 'Merriweather', serif;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+body.light-mode .btn:hover {
+  background-color: #3A0519;
+  color: #EF88AD;
+}
+
+body.light-mode footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #F6D7DF; /* muted mauve */
+  color: #3A0519;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(170, 70, 100, 0.2);
+}
+
+body.light-mode .home-icon svg {
+  fill: #3A0519;
+}
+
+body.light-mode .home-icon:hover svg {
+  fill: #EF88AD;
+  transform: scale(1.15);
+  text-shadow: 0 0 6px rgba(239, 136, 173, 0.5);
+}
+
+/* Voice search button */
+body.light-mode #voiceSearchBtn i {
+  font-size: 20px;
+  color: #3A0519; 
+}
+
+/* Specific styling for the search bar and home icon */
+body.light-mode .search-container input[type="text"] {
+  background-color: #FFF0F4; /* soft warm white */
+}
+
+body.light-mode a:hover .home-icon {
+  background-color: #F9CEDB;
+}
+
+
+</style></head>
+<body>
+
+<header>
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h1>Find Your Style</h1>
+<div class="home-icon"><a href="index.html" title="Back to Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3L2 9h3v11h6V14h2v6h6V9h3z"/></svg></a></div>
+
+  </div>
+</header>
+
+<div class="search-container">
+  <div style="position: relative; display: inline-block; width: 60%;">
+    <input type="text" id="searchInput" placeholder="Search for products..." />
+   <button id="voiceSearchBtn" title="Speak now" style="
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+">
+ 
+  <i class="fas fa-microphone" style="font-size: 20px; color: #3A0519;"></i>
+</button>
+
+    </button>
+  </div>
+</div>
+
+<div class="products" id="productList">
+<div class="product-card" data-name="Asics GT-2160 Sneakers">
+  <a href="Asics GT-2160 Sneakers.html">
+    <img src="Asics GT-2160 Sneakers.jpeg" alt="Asics GT-2160 Sneakers">
+  </a>
+  <div class="product-info">
+    <h2>Asics GT-2160 Sneakers</h2>
+    <p class="price">149php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Lolita Women's Japanese Shoes">
+  <a href="Lolita Women's Japanese Shoes.html">
+    <img src="Lolita Women's Japanese Shoes.jpeg" alt="Lolita Women's Japanese Shoes">
+  </a>
+  <div class="product-info">
+    <h2>Lolita Women's Japanese Shoes</h2>
+    <p class="price">121php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Saddle Shoes (Pink&White)">
+  <a href="Saddle Shoes (Pink&White).html">
+    <img src="Saddle Shoes (Pink&White).jpeg" alt="Saddle Shoes (Pink&White)">
+  </a>
+  <div class="product-info">
+    <h2>Saddle Shoes (Pink&White)</h2>
+    <p class="price">100php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Star Shoes">
+  <a href="Star Shoes.html">
+    <img src="Star Shoes.jpeg" alt="Star Shoes">
+  </a>
+  <div class="product-info">
+    <h2>Star Shoes</h2>
+    <p class="price">99php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Women's Safety Shoes">
+  <a href="Women's Safety Shoes .html">
+    <img src="Women's Safety Shoes .jpeg" alt="Women's Safety Shoes">
+  </a>
+  <div class="product-info">
+    <h2>Women's Safety Shoes</h2>
+    <p class="price">130php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Two Tone Chunky High Tops">
+  <a href="Two Tone Chunky High Tops.html">
+    <img src="Two Tone Chunky High Tops.jpeg" alt="Two Tone Chunky High Tops">
+  </a>
+  <div class="product-info">
+    <h2>Two Tone Chunky High Tops</h2>
+    <p class="price">101php</p>
+    
+  </div>
+</div>
+<div class="product-card" data-name="White Gathered Tank_250">
+  <a href="White Gathered Tank_250.html">
+    <img src="White Gathered Tank_250.jpg" alt="White Gathered Tank_250">
+  </a>
+  <div class="product-info">
+    <h2>White Gathered Tank_250</h2>
+    <p class="price">199php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Sweet Bow Decor Camisole Set_250">
+  <a href="Sweet Bow Decor Camisole Set_250.html">
+    <img src="Sweet Bow Decor Camisole Set_250.jpg" alt="Sweet Bow Decor Camisole Set_250">
+  </a>
+  <div class="product-info">
+    <h2>Sweet Bow Decor Camisole Set_250</h2>
+    <p class="price">201php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Ruched Square Neck_250">
+  <a href="Ruched Square Neck_250.html">
+    <img src="Ruched Square Neck_250.jpg" alt="Ruched Square Neck_250">
+  </a>
+  <div class="product-info">
+    <h2>Ruched Square Neck_250</h2>
+    <p class="price">206php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Soft Pink Dress Set_250">
+  <a href="Soft Pink Dress Set_250.html">
+    <img src="Soft Pink Dress Set_250.jpg" alt="Soft Pink Dress Set_250">
+  </a>
+  <div class="product-info">
+    <h2>Soft Pink Dress Set_250</h2>
+    <p class="price">198php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Ribbed Pink top & short set_250">
+  <a href="Ribbed Pink top & short set_250.html">
+    <img src="Ribbed Pink top & short set_250.jpg" alt="Ribbed Pink top & short set_250">
+  </a>
+  <div class="product-info">
+    <h2>Ribbed Pink top & short set_250</h2>
+    <p class="price">177php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Patchwork Rose Dreamy_250">
+  <a href="Patchwork Rose Dreamy_250.html">
+    <img src="Patchwork Rose Dreamy_250.jpg" alt="Patchwork Rose Dreamy_250">
+  </a>
+  <div class="product-info">
+    <h2>Patchwork Rose Dreamy_250</h2>
+    <p class="price">210php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Mermaid Long Sleeve_250">
+  <a href="Mermaid Long Sleeve_250.html">
+    <img src="Mermaid Long Sleeve_250.jpg" alt="Mermaid Long Sleeve_250">
+  </a>
+  <div class="product-info">
+    <h2>Mermaid Long Sleeve_250</h2>
+    <p class="price">222php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Knitted Ribbed Off-Shoulder_250">
+  <a href="Knitted Ribbed Off-Shoulder_250.html">
+    <img src="Knitted Ribbed Off-Shoulder_250.jpg" alt="Knitted Ribbed Off-Shoulder_250">
+  </a>
+  <div class="product-info">
+    <h2>Knitted Ribbed Off-Shoulder_250</h2>
+    <p class="price">232php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Floral Print Tie_250">
+  <a href="Floral Print Tie_250.html">
+    <img src="Floral Print Tie_250.jpg" alt="Floral Print Tie_250">
+  </a>
+  <div class="product-info">
+    <h2>Floral Print Tie_250</h2>
+    <p class="price">208php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Halter Neck Top And Skirt_250">
+  <a href="Halter Neck Top And Skirt_250.html">
+    <img src="Halter Neck Top And Skirt_250.jpg" alt="Halter Neck Top And Skirt_250">
+  </a>
+  <div class="product-info">
+    <h2>Halter Neck Top And Skirt_250</h2>
+    <p class="price">209php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Disty Floral Set_250">
+  <a href="Disty Floral Set_250.html">
+    <img src="Disty Floral Set_250.jpg" alt="Disty Floral Set_250">
+  </a>
+  <div class="product-info">
+    <h2>Disty Floral Set_250</h2>
+    <p class="price">188php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Floral Halter Crop Top and Mini Skirt_250">
+  <a href="Floral Halter Crop Top and Mini Skirt_250.html">
+    <img src="Floral Halter Crop Top and Mini Skirt_250.jpg" alt="Floral Halter Crop Top and Mini Skirt_250">
+  </a>
+  <div class="product-info">
+    <h2>Floral Halter Crop Top and Mini Skirt_250</h2>
+    <p class="price">195php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Bow-Knott Texture Wide Strap Top & Skirt Set_250">
+  <a href="Bow-Knott Texture Wide Strap Top & Skirt Set_250.html">
+    <img src="Bow-Knott Texture Wide Strap Top & Skirt Set_250.jpg" alt="Bow-Knott Texture Wide Strap Top & Skirt Set_250">
+  </a>
+  <div class="product-info">
+    <h2>Bow-Knott Texture Wide Strap Top & Skirt Set_250</h2>
+    <p class="price">165php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Beiged knitted Jacquard Round Neck Top and Asymmetric Skirt Set_250">
+  <a href="Beiged knitted Jacquard Round Neck Top and Asymmetric Skirt Set_250.html">
+    <img src="Beiged knitted  Jacquard Round Neck Top and Asymmetric Skirt Set_250.jpg" alt="Beiged knitted Jacquard Round Neck Top and Asymmetric Skirt Set_250">
+  </a>
+  <div class="product-info">
+    <h2 style="font-size: 0.9rem;">Beiged knitted Jacquard Round Neck Top and Asymmetric Skirt Set_250</h2>
+    <p class="price">207php</p>
+    
+  </div>
+</div>
+<div class="product-card" data-name="Basic Butterfly T-shirt">
+  <a href="Basic Butterfly T-shirt.html">
+    <img src="Basic Butterfly T-shirt .jpg" alt="Basic Butterfly T-shirt">
+  </a>
+  <div class="product-info">
+    <h2>Basic Butterfly T-shirt</h2>
+    <p class="price">128php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Black Crew Neck Floral Long sleeve">
+  <a href="Black Crew Neck Floral Long sleeve.html">
+    <img src="Black Crew Neck Floral Long sleeve .jpg" alt="#3A0519 Crew Neck Floral Long sleeve">
+  </a>
+  <div class="product-info">
+    <h2>Black Crew Neck Floral Long sleeve</h2>
+    <p class="price">101php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Bow Summer Top">
+  <a href="Bow Summer Top.html">
+    <img src="Bow Summer Top.jpg" alt="Bow Summer Top">
+  </a>
+  <div class="product-info">
+    <h2>Bow Summer Top</h2>
+    <p class="price">100php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Bowknot Embroidery Waist Tie Off Shoulder">
+  <a href="Bowknot Embroidery Waist Tie Off Shoulder.html">
+    <img src="Bowknot Embroidery Waist Tie Off Shoulder .jpg" alt="Bowknot Embroidery Waist Tie Off Shoulder">
+  </a>
+  <div class="product-info">
+    <h2>Bowknot Embroidery Waist Tie Off Shoulder</h2>
+    <p class="price">99php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Cold Shoulder Bowknot Detailed T-Shirt">
+  <a href="Cold Shoulder Bowknot Detailed T-Shirt.html">
+    <img src="Cold Shoulder Bowknot Detailed T-Shirt.jpg" alt="Cold Shoulder Bowknot Detailed T-Shirt">
+  </a>
+  <div class="product-info">
+    <h2>Cold Shoulder Bowknot Detailed T-Shirt</h2>
+    <p class="price">84php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Hem Slit Lantern Sleeve Blouse">
+  <a href="Hem Slit Lantern Sleeve Blouse.html">
+    <img src="Hem Slit Lantern Sleeve Blouse .jpg" alt="Hem Slit Lantern Sleeve Blouse">
+  </a>
+  <div class="product-info">
+    <h2>Hem Slit Lantern Sleeve Blouse</h2>
+    <p class="price">78php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Long Sleeve with Collar">
+  <a href="Long Sleeve with Collar.html">
+    <img src="Long Sleeve with Collar.jpg" alt="Long Sleeve with Collar">
+  </a>
+  <div class="product-info">
+    <h2>Long Sleeve with Collar</h2>
+    <p class="price">102php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Oversized Off Shoulder">
+  <a href="Oversized Off Shoulder.html">
+    <img src="Oversized Off Shoulder .jpg" alt="Oversized Off Shoulder">
+  </a>
+  <div class="product-info">
+    <h2>Oversized Off Shoulder</h2>
+    <p class="price">130php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Raffle Hem Cami Top">
+  <a href="Raffle Hem Cami Top.html">
+    <img src="Raffle Hem Cami Top.jpg" alt="Raffle Hem Cami Top">
+  </a>
+  <div class="product-info">
+    <h2>Raffle Hem Cami Top</h2>
+    <p class="price">145php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Satin Bow-Knot T-Shirt">
+  <a href="Satin Bow-Knot T-Shirt.html">
+    <img src="Satin Bow-Knot T-Shirt.jpg" alt="Satin Bow-Knot T-Shirt">
+  </a>
+  <div class="product-info">
+    <h2>Satin Bow-Knot T-Shirt</h2>
+    <p class="price">118php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Solid Color Knit Camisole">
+  <a href="Solid Color Knit Camisole.html">
+    <img src="Solid Color Knit Camisole.jpg" alt="Solid Color Knit Camisole">
+  </a>
+  <div class="product-info">
+    <h2>Solid Color Knit Camisole</h2>
+    <p class="price">112php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Y2K Summer Spring Top">
+  <a href="Y2K Summer Spring Top.html">
+    <img src="Y2K Summer Spring Top.jpg" alt="Y2K Summer Spring Top">
+  </a>
+  <div class="product-info">
+    <h2>Y2K Summer Spring Top</h2>
+    <p class="price">114php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Asymmetrical Hem">
+  <a href="Asymmetrical Hem.html">
+    <img src="Asymmetrical Hem.jpg" alt="Asymmetrical Hem">
+  </a>
+  <div class="product-info">
+    <h2>Asymmetrical Hem</h2>
+    <p class="price">119php</p>
+    
+  </div>
+</div>
+<div class="product-card" data-name="Wrap Tailored Trouser_180">
+  <a href="Wrap Tailored Trouser_180.html">
+    <img src="Wrap Tailored Trouser_180.jpg" alt="Wrap Tailored Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Wrap Tailored Trouser_180</h2>
+    <p class="price">120php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Wool-Twill Wide Leg Trouser_180">
+  <a href="Wool-Twill Wide Leg Trouser_180.html">
+    <img src="Wool-Twill Wide Leg Trouser_180.jpg" alt="Wool-Twill Wide Leg Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Wool-Twill Wide Leg Trouser_180</h2>
+    <p class="price">112php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Wool Blend Trouser_180">
+  <a href="Wool Blend Trouser_180.html">
+    <img src="Wool Blend Trouser_180.jpg" alt="Wool Blend Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Wool Blend Trouser_180</h2>
+    <p class="price">119php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Wool Blend Brown Trouser_180">
+  <a href="Wool Blend Brown Trouser_180.html">
+    <img src="Wool Blend Brown Trouser_180.jpg" alt="Wool Blend Brown Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Wool Blend Brown Trouser_180</h2>
+    <p class="price">100php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Winter Wide Leg Trouser_180">
+  <a href="Winter Wide Leg Trouser_180.html">
+    <img src="Winter Wide Leg Trouser_180.jpg" alt="Winter Wide Leg Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Winter Wide Leg Trouser_180</h2>
+    <p class="price">99php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Valeria Pour Trouser_180">
+  <a href="Valeria Pour Trouser_180.html">
+    <img src="Valeria Pour Trouser_180.jpg" alt="Valeria Pour Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Valeria Pour Trouser_180</h2>
+    <p class="price">89php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Tailored Hourglass Trouser_180">
+  <a href="Tailored Hourglass Trouser_180.html">
+    <img src="Tailored Hourglass Trouser_180.jpg" alt="Tailored Hourglass Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Tailored Hourglass Trouser_180</h2>
+    <p class="price">110php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Straight Leg Pants_180">
+  <a href="Straight Leg Pants_180.html">
+    <img src="Straight Leg Pants_180.jpg" alt="Straight Leg Pants_180">
+  </a>
+  <div class="product-info">
+    <h2>Straight Leg Pants_180</h2>
+    <p class="price">101php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Khaki Wide Leg Trouser_180">
+  <a href="Khaki Wide Leg Trouser_180.html">
+    <img src="Khaki Wide Leg Trouser_180.jpg" alt="Khaki Wide Leg Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Khaki Wide Leg Trouser_180</h2>
+    <p class="price">115php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="High-Waisted Solid Color Button Wide Leg Pants_180">
+  <a href="High-Waisted Solid Color Button Wide Leg Pants_180.html">
+    <img src="High-Waisted Solid Color Button Wide Leg Pants_180.jpg" alt="High-Waisted Solid Color Button Wide Leg Pants_180">
+  </a>
+  <div class="product-info">
+    <h2>High-Waisted Solid Color Button Wide Leg Pants_180</h2>
+    <p class="price">104php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Elegant Trouser_180">
+  <a href="Elegant Trouser_180.html">
+    <img src="Elegant Trouser_180.jpg" alt="Elegant Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Elegant Trouser_180</h2>
+    <p class="price">123php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Delilah Wide Leg_180">
+  <a href="Delilah Wide Leg_180.html">
+    <img src="Delilah Wide Leg_180.jpg" alt="Delilah Wide Leg_180">
+  </a>
+  <div class="product-info">
+    <h2>Delilah Wide Leg_180</h2>
+    <p class="price">116php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Del Core Trouser_180">
+  <a href="Del Core Trouser_180.html">
+    <img src="Del Core Trouser_180.jpg" alt="Del Core Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Del Core Trouser_180</h2>
+    <p class="price">97php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Carolina Herrera Pleated Trouser_180">
+  <a href="Carolina Herrera Pleated Trouser_180.html">
+    <img src="Carolina Herrera Pleated Trouser_180.jpg" alt="Carolina Herrera Pleated Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Carolina Herrera Pleated Trouser_180</h2>
+    <p class="price">114php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Beige Trouser_180">
+  <a href="Beige Trouser_180.html">
+    <img src="Beige Trouser_180.jpg" alt="Beige Trouser_180">
+  </a>
+  <div class="product-info">
+    <h2>Beige Trouser_180</h2>
+    <p class="price">90php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="ShadowRush">
+  <a href="ShadowRush.html">
+    <img src="ShadowRush.jpg" alt="ShadowRush">
+  </a>
+  <div class="product-info">
+    <h2>ShadowRush</h2>
+    <p class="price">99php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Bare Beauty Set">
+  <a href="Bare Beauty Set.html">
+    <img src="Bare Beauty Set.jpeg" alt="Bare Beauty Set">
+  </a>
+  <div class="product-info">
+    <h2>Bare Beauty Set</h2>
+    <p class="price">165php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="SkinPerfection Concealer">
+  <a href="SkinPerfection Concealer.html">
+    <img src="SkinPerfection Concealer.jpg" alt="SkinPerfection Concealer">
+  </a>
+  <div class="product-info">
+    <h2>SkinPerfection Concealer</h2>
+    <p class="price">50php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Silky Smooth Powder">
+  <a href="Silky Smooth Powder.html">
+    <img src="Silky Smooth Powder1.jpg" alt="Silky Smooth Powder1">
+  </a>
+  <div class="product-info">
+    <h2>Silky Smooth Powder</h2>
+    <p class="price">45php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Vellure Contour">
+  <a href="Vellure Contour.html">
+    <img src="Vellure Contour1.jpg" alt="Vellure Contour1">
+  </a>
+  <div class="product-info">
+    <h2>Vellure Contour</h2>
+    <p class="price">55php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="InnerGlow">
+  <a href="InnerGlow.html">
+    <img src="InnerGlow1.jpg" alt="InnerGlow1">
+  </a>
+  <div class="product-info">
+    <h2>InnerGlow</h2>
+    <p class="price">70php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="GlowGetter Highlighter">
+  <a href="GlowGetter Highlighter.html">
+    <img src="GlowGetter Highlighter1.jpg" alt="GlowGetter Highlighter1">
+  </a>
+  <div class="product-info">
+    <h2>GlowGetter Highlighter</h2>
+    <p class="price">80php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Blush Bloom">
+  <a href="Blush Bloom.html">
+    <img src="Blush Bloom.jpg" alt="Blush Bloom">
+  </a>
+  <div class="product-info">
+    <h2>Blush Bloom</h2>
+    <p class="price">77php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Blen Beauty Foundation">
+  <a href="Blen Beauty Foundation.html">
+    <img src="Blen Beauty Foundation.jpg" alt="Blen Beauty Foundation">
+  </a>
+  <div class="product-info">
+    <h2>Blen Beauty Foundation</h2>
+    <p class="price">68php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="BlendBeauty">
+  <a href="BlendBeauty.html">
+    <img src="BlendBeauty.jpg" alt="BlendBeauty">
+  </a>
+  <div class="product-info">
+    <h2>BlendBeauty</h2>
+    <p class="price">8php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Blue Denim Sandals">
+  <a href="Blue Denim Sandals.html">
+    <img src="Blue Denim Sandals.jpeg" alt="Blue Denim Sandals">
+  </a>
+  <div class="product-info">
+    <h2>Blue Denim Sandals</h2>
+    <p class="price">135php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Boston Suede Leather">
+  <a href="Boston Suede Leather.html">
+    <img src="Boston Suede Leather.jpeg" alt="Boston Suede Leather">
+  </a>
+  <div class="product-info">
+    <h2>Boston Suede Leather</h2>
+    <p class="price">130php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Mellisa Holly Sandals">
+  <a href="Mellisa Holly Sandals.html">
+    <img src="Mellisa Holly Sandals.jpeg" alt="Mellisa Holly Sandals">
+  </a>
+  <div class="product-info">
+    <h2>Mellisa Holly Sandals</h2>
+    <p class="price">120php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Multi Slide Sandals">
+  <a href="Multi Slide Sandals.html">
+    <img src="Multi Slide Sandals.jpeg" alt="Multi Slide Sandals">
+  </a>
+  <div class="product-info">
+    <h2>Multi Slide Sandals</h2>
+    <p class="price">100php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Women's Chunky Sandals">
+  <a href="Women's Chunky Sandals.html">
+    <img src="Women's Chunky Sandals.jpeg" alt="Women's Chunky Sandals">
+  </a>
+  <div class="product-info">
+    <h2>Women's Chunky Sandals</h2>
+    <p class="price">130php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Women's Flat Bow">
+  <a href="Women's Flat Bow.html">
+    <img src="Women's Flat Bow.jpeg" alt="Women's Flat Bow">
+  </a>
+  <div class="product-info">
+    <h2>Women's Flat Bow</h2>
+    <p class="price">136php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Women's Sandals Black">
+  <a href="Women's Sandals Black.html">
+    <img src="Women's Sandals Black.jpeg" alt="Women's Sandals Black">
+  </a>
+  <div class="product-info">
+    <h2>Women's Sandals Black</h2>
+    <p class="price">122php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Women's Summer Closed Toe Faux Leather Sandals">
+  <a href="Women's Summer Closed Toe Faux Leather Sandals.html">
+    <img src="Women's Summer Closed Toe Faux Leather Sandals.jpeg" alt="Women's Summer Closed Toe Faux Leather Sandals">
+  </a>
+  <div class="product-info">
+    <h2>Women's Summer Closed Toe Faux Leather Sandals</h2>
+    <p class="price">121php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Nude Pink Summer Chunky Heels">
+  <a href="Nude Pink Summer Chunky Heels.html">
+    <img src="Nude Pink Summer Chunky Heels.jpeg" alt="Nude Pink Summer Chunky Heels">
+  </a>
+  <div class="product-info">
+    <h2>Nude Pink Summer Chunky Heels</h2>
+    <p class="price">250php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Square Toe Block Heels">
+  <a href="Square Toe Block Heels.html">
+    <img src="Square Toe Block Heels.jpeg" alt="Square Toe Block Heels">
+  </a>
+  <div class="product-info">
+    <h2>Square Toe Block Heels</h2>
+    <p class="price">250php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Vintage Square Toe Sandals">
+  <a href="Vintage Square Toe Sandals.html">
+    <img src="Vintage Square Toe Sandals.jpeg" alt="Vintage Square Toe Sandals">
+  </a>
+  <div class="product-info">
+    <h2>Vintage Square Toe Sandals</h2>
+    <p class="price">140php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Women's Lace-Up Bow High Heels">
+  <a href="Women's Lace-Up Bow High Heels.html">
+    <img src="Women's Lace-Up Bow High Heels.jpeg" alt="Women's Lace-Up Bow High Heels">
+  </a>
+  <div class="product-info">
+    <h2>Women's Lace-Up Bow High Heels</h2>
+    <p class="price">170php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Women's Mary Jane Flatform Heels">
+  <a href="Women's Mary Jane Flatform Heels.html">
+    <img src="Women's Mary Jane Flatform Heels.jpeg" alt="Women's Mary Jane Flatform Heels">
+  </a>
+  <div class="product-info">
+    <h2>Women's Mary Jane Flatform Heels</h2>
+    <p class="price">200php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Women's Square Toe Mid Heels Dress Shoes">
+  <a href="Women's Square Toe Mid Heels Dress Shoes.html">
+    <img src="Women's Square Toe Mid Heels Dress Shoes.jpeg" alt="Women's Square Toe Mid Heels Dress Shoes">
+  </a>
+  <div class="product-info">
+    <h2>Women's Square Toe Mid Heels Dress Shoes</h2>
+    <p class="price">102php</p>
+    
+  </div>
+</div>
+
+<div class="product-card" data-name="Backless Denim Corset">
+  <a href="Backless Denim Corset.html">
+    <img src="Backless Denim Corset.jpg" alt="Backless Denim Corset">
+    <div class="product-info"></a>
+      <h2>Backless Denim Corset</h2>
+      <p class="price">113php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Cargo Chic">
+  <a href="Cargo Chic.html">
+    <img src="Cargo Chic.jpg" alt="Cargo Chic">
+    <div class="product-info"></a>
+      <h2>Cargo Chic</h2>
+      <p class="price">110php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Cross-stitch Denim">
+  <a href="Cross-stitch Denim.html">
+    <img src="Cross-stitch Denim.jpg" alt="Cross-stitch Denim">
+    <div class="product-info"></a>
+      <h2>Cross-stitch Denim</h2>
+      <p class="price">121php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Cupid’s Cargo">
+  <a href="Cupid’s Cargo.html">
+    <img src="Cupid’s Cargo .jpg" alt="Cupid’s Cargo ">
+    <div class="product-info"></a>
+      <h2>Cupid’s Cargo </h2>
+      <p class="price">88php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Denim butterfly">
+  <a href="Denim butterfly.html">
+    <img src="Denim butterfly .jpg" alt="Denim butterfly ">
+    <div class="product-info"></a>
+      <h2>Denim butterfly </h2>
+      <p class="price">130php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Denim button-frontt halter">
+  <a href="Denim button-frontt halter.html">
+    <img src="Denim button-frontt halter.jpg" alt="Denim button-frontt halter">
+    <div class="product-info"></a>
+      <h2>Denim button-frontt halter</h2>
+      <p class="price">101php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Denim Darling">
+  <a href="Denim Darling.html">
+    <img src="Denim Darling.jpg" alt="Denim Darling">
+    <div class="product-info"></a>
+      <h2>Denim Darling</h2>
+      <p class="price">109php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Denim delight">
+  <a href="Denim delight.html">
+    <img src="Denim delight .jpg" alt="Denim delight ">
+    <div class="product-info"></a>
+      <h2>Denim delight </h2>
+      <p class="price">100php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Denim Delight set">
+  <a href="Denim Delight set.html">
+    <img src="Denim Delight set.jpg" alt="Denim Delight set">
+    <div class="product-info"></a>
+      <h2>Denim Delight set</h2>
+      <p class="price">121php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Denim flirt">
+  <a href="Denim flirt.html">
+    <img src="Denim flirt.jpg" alt="Denim flirt">
+    <div class="product-info"></a>
+      <h2>Denim flirt</h2>
+      <p class="price">102php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Denim Mini-over">
+  <a href="Denim Mini-over.html">
+    <img src="Denim Mini-over.jpg" alt="Denim Mini-over">
+    <div class="product-info"></a>
+      <h2>Denim Mini-over</h2>
+      <p class="price">97php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Denim Overlay">
+  <a href="Denim Overlay.html">
+    <img src="Denim Overlay.jpg" alt="Denim Overlay">
+    <div class="product-info"></a>
+      <h2>Denim Overlay</h2>
+      <p class="price">99php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Denim Silhouette">
+  <a href="Denim Silhouette.html">
+    <img src="Denim Silhouette .jpg" alt="Denim Silhouette ">
+    <div class="product-info"></a>
+      <h2>Denim Silhouette </h2>
+      <p class="price">94php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Denim Siren">
+  <a href="Denim Siren.html">
+    <img src="Denim Siren.jpg" alt="Denim Siren">
+    <div class="product-info"></a>
+      <h2>Denim Siren</h2>
+      <p class="price">103php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Denim wrap">
+  <a href="Denim wrap.html">
+    <img src="Denim wrap.jpg" alt="Denim wrap">
+    <div class="product-info"></a>
+      <h2>Denim wrap</h2>
+      <p class="price">122php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Halter Harmony">
+  <a href="Halter Harmony.html">
+    <img src="Halter Harmony.jpg" alt="Halter Harmony">
+    <div class="product-info"></a>
+      <h2>Halter Harmony</h2>
+      <p class="price">137php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="High-slit siren">
+  <a href="High-slit siren.html">
+    <img src="High-slit siren .jpg" alt="High-slit siren ">
+    <div class="product-info"></a>
+      <h2>High-slit siren </h2>
+      <p class="price">112php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Indigo Ribbon">
+  <a href="Indigo Ribbon.html">
+    <img src="Indigo Ribbon.jpg" alt="Indigo Ribbon">
+    <div class="product-info"></a>
+      <h2>Indigo Ribbon</h2>
+      <p class="price">131php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Midnight Bloom">
+  <a href="Midnight Bloom.html">
+    <img src="Midnight Bloom.jpg" alt="Midnight Bloom">
+    <div class="product-info"></a>
+      <h2>Midnight Bloom</h2>
+      <p class="price">110php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Mini denim skort">
+  <a href="Mini denim skort.html">
+    <img src="Mini denim skort.jpg" alt="Mini denim skort">
+    <div class="product-info"></a>
+      <h2>Mini denim skort</h2>
+      <p class="price">104php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Rebellious Denim">
+  <a href="Rebellious Denim.html">
+    <img src="Rebellious Denim.jpg" alt="Rebellious Denim">
+    <div class="product-info"></a>
+      <h2>Rebellious Denim</h2>
+      <p class="price">140php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Ruffle Romance">
+  <a href="Ruffle Romance .html">
+    <img src="Ruffle Romance .jpg" alt="Ruffle Romance ">
+    <div class="product-info"></a>
+      <h2>Ruffle Romance </h2>
+      <p class="price">115php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Ruffled rebel">
+  <a href="Ruffled rebel.html">
+    <img src="Ruffled rebel.jpg" alt="Ruffled rebel">
+    <div class="product-info"></a>
+      <h2>Ruffled rebel</h2>
+      <p class="price">125php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Shoulder shrug">
+  <a href="Shoulder shrug .html">
+    <img src="Shoulder shrug .jpg" alt="Shoulder shrug ">
+    <div class="product-info"></a>
+      <h2>Shoulder shrug </h2>
+      <p class="price">146php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Sun-kissed Denim">
+  <a href="Sun-kissed Denim.html">
+    <img src="Sun-kissed Denim.jpg" alt="Sun-kissed Denim">
+    <div class="product-info"></a>
+      <h2>Sun-kissed Denim</h2>
+      <p class="price">96php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="The Crossroads">
+  <a href="The Crossroads .html">
+    <img src="The Crossroads .jpg" alt="The Crossroads ">
+    <div class="product-info"></a>
+      <h2>The Crossroads </h2>
+      <p class="price">90php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Washed Denim">
+  <a href="Washed Denim.html">
+    <img src="Washed Denim.jpg" alt="Washed Denim">
+    <div class="product-info"></a>
+      <h2>Washed Denim</h2>
+      <p class="price">102php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="The Denim Waltz">
+  <a href="The Denim Waltz.html">
+    <img src="The Denim Waltz.jpg" alt="The Denim Waltz">
+    <div class="product-info"></a>
+      <h2>The Denim Waltz</h2>
+      <p class="price">122php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Whisper back Denim">
+  <a href="Whisper back Denim .html">
+    <img src="Whisper back Denim .jpg" alt="Whisper back Denim ">
+    <div class="product-info"></a>
+      <h2>Whisper back Denim </h2>
+      <p class="price">103php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+</div>
+
+<div class="product-card" data-name="Bow Fringe Loafers">
+    <a href="Bow Fringe Loafers.html">
+      <img src="Bow Fringe Loafers.jpeg" alt="Bow Fringe Loafers">
+      <div class="product-info">
+        <h2>Bow Fringe Loafers</h2>
+        <p class="price">200php</p>
+        <div class="btn-group">
+          <button class="btn add-to-cart">Add to Cart</button>
+          <button class="btn buy-now">Buy Now</button>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="product-card" data-name="Brown Flat Shoes With Flowers On Top">
+    <a href="Brown Flat Shoes With Flowers On Top.html">
+      <img src="Brown Flat Shoes With Flowers On Top.jpeg" alt="Brown Flat Shoes With Flowers On Top">
+      <div class="product-info">
+        <h2>Brown Flat Shoes With Flowers On Top</h2>
+        <p class="price">150php</p>
+        <div class="btn-group">
+          <button class="btn add-to-cart">Add to Cart</button>
+          <button class="btn buy-now">Buy Now</button>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="product-card" data-name="Pointed-Toe Bow Flats">
+    <a href="Pointed-Toe Bow Flats.html">
+      <img src="Pointed-Toe Bow Flats.jpeg" alt="Pointed-Toe Bow Flats">
+      <div class="product-info">
+        <h2>Pointed-Toe Bow Flats</h2>
+        <p class="price">180php</p>
+        <div class="btn-group">
+          <button class="btn add-to-cart">Add to Cart</button>
+          <button class="btn buy-now">Buy Now</button>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="product-card" data-name="Women's Brown Flat Shoes With Bowknot Detail">
+    <a href="Women's Brown Flat Shoes With Bowknot Detail.html">
+      <img src="Women's Brown Flat Shoes With Bowknot Detail.jpeg" alt="Women's Brown Flat Shoes With Bowknot Detail">
+      <div class="product-info">
+        <h2>Women's Brown Flat Shoes With Bowknot Detail</h2>
+        <p class="price">230php</p>
+        <div class="btn-group">
+          <button class="btn add-to-cart">Add to Cart</button>
+          <button class="btn buy-now">Buy Now</button>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="product-card" data-name="Peep Toe Flat Bow">
+    <a href="Peep Toe Flat Bow.html">
+      <img src="Peep Toe Flat Bow.jpeg" alt="Peep Toe Flat Bow">
+      <div class="product-info">
+        <h2>Peep Toe Flat Bow</h2>
+        <p class="price">190php</p>
+        <div class="btn-group">
+          <button class="btn add-to-cart">Add to Cart</button>
+          <button class="btn buy-now">Buy Now</button>
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+</div>
+
+  <footer id="contact"><p>&copy; 2025 VÈDA FASHION | Contact us: vedafashion@gmail.com</p><div class="social-icons"><a href="https://www.instagram.com/veda.fashion02"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/veda.fashion.2025"><i class="fab fa-facebook-f"></i></a></div></footer>
+<script>
+  const searchInput = document.getElementById('searchInput');
+const productCards = document.querySelectorAll('.product-card');
+
+// Handle search query via URL
+const urlParams = new URLSearchParams(window.location.search);
+const query = urlParams.get('query');
+if (query) {
+  searchInput.value = query;
+  filterProducts(query.toLowerCase());
+}
+
+searchInput.addEventListener('input', function () {
+  filterProducts(this.value.toLowerCase());
+});
+
+// Function to filter products based on the search query
+function filterProducts(filter) {
+  const filterWords = filter.split(/\s+/).filter(Boolean);
+
+  productCards.forEach(card => {
+    const name = card.getAttribute('data-name').toLowerCase();
+    const nameWords = name.split(/\s+/);
+
+    const isMatch = filterWords.some(fw =>
+      nameWords.some(nw => nw.includes(fw))
+    );
+
+    card.style.display = isMatch ? 'flex' : 'none';
+  });
+}
+
+// Voice Search functionality
+const voiceSearchBtn = document.getElementById('voiceSearchBtn');
+
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+
+  voiceSearchBtn.addEventListener('click', () => {
+    recognition.start();
+    voiceSearchBtn.classList.add('voice-active');
+  });
+
+  recognition.onresult = function(event) {
+    const transcript = event.results[0][0].transcript;
+    searchInput.value = transcript;
+    filterProducts(transcript.toLowerCase());
+  };
+
+  recognition.onend = function () {
+    voiceSearchBtn.classList.remove('voice-active');
+  };
+
+  recognition.onerror = function(event) {
+    console.error('Speech recognition error:', event.error);
+    voiceSearchBtn.classList.remove('voice-active');
+  };
+} else {
+  voiceSearchBtn.style.display = 'none';
+  console.warn('Speech recognition is not supported in this browser.');
+}
+
+// Add to Cart functionality
+document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    // Get the name of the product from the data-name attribute
+    const productName = e.target.closest('.product-card').getAttribute('data-name');
+    
+    // Add item to cart in localStorage (or any other storage you use)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(productName);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Alert user that item has been added
+    alert(`${productName} has been added to your cart!`);
+  });
+});
+
+// Buy Now functionality
+document.querySelectorAll('.buy-now').forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = 'checkout.html';
+  });
+});
+
+window.addEventListener("DOMContentLoaded", () => localStorage.getItem("theme") === "light" && document.body.classList.add("light-mode"));</script>
+
+</body>
+</html>
