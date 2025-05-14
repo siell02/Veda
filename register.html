@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Register</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><link rel="stylesheet" href="social.css"><link rel="stylesheet" href="toggle.css"><style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #3A0519;
+      color: #fff;
+      padding: 30px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .register {
+      background-color: #670D2F;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      background-color: #111;
+      color: white;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #4C2B37;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #EF88AD;
+    }
+
+    p {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .register-link {
+      color: #64b5f6;
+      text-decoration: underline;
+    }
+
+    .register-link:hover {
+      color: #90caf9;
+    }
+</style></head>
+<body>
+  <div class="register">
+    <form id="register-form">
+      <h1>Register</h1>
+
+      <label for="reg-username">Username</label>
+      <input type="text" id="reg-username" required>
+
+      <label for="reg-password">Password</label>
+      <input type="password" id="reg-password" required>
+
+      <button type="submit">Register</button>
+
+      <p>
+        Already have an account?
+        <a href="login.html" class="register-link">Log in here</a>
+      </p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('register-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('reg-username').value.trim();
+      const password = document.getElementById('reg-password').value;
+
+      if (!username || !password) {
+        alert("Please enter both username and password.");
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const userExists = users.some(user => user.username === username);
+
+      if (userExists) {
+        alert("This username already exists. Please log in or use a different username.");
+        return;
+      }
+
+      users.push({ username, password });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      alert("Account successfully created! Please log in using your new account.");
+      window.location.href = "login.html";
+    });
+  window.addEventListener("DOMContentLoaded", () => localStorage.getItem("theme") === "light" && document.body.classList.add("light-mode"));</script>
+</body>
+</html>

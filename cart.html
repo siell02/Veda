@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Cart - VÈDA FASHION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><link rel="stylesheet" href="social.css"><link rel="stylesheet" href="toggle.css"><style>
+    body {
+      background-color: #4C2B37;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+
+    header {
+      background-color: #3A0519;
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      color: #fff;
+      position: relative;
+	   font-family: 'Lora', serif;
+    }
+
+    .header-icons {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .home-icon svg {
+      width: 26px;
+      height: 26px;
+      fill: white;
+      cursor: pointer;
+      transition: fill 0.3s ease;
+    }
+
+    .home-icon svg:hover {
+      fill:  #4C2B37;
+    }
+
+    .cart-container {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .cart-item {
+      background-color: #3A0519;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    .cart-item input[type="checkbox"] {
+      margin-right: 15px;
+      transform: scale(1.2);
+      accent-color:  #4C2B37;
+    }
+
+    .cart-item img {
+      width: 120px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+
+    .item-details {
+      flex-grow: 1;
+    }
+
+    .item-details h3 {
+      margin-bottom: 8px;
+    }
+
+    .remove-btn, .bulk-btn {
+      background-color:  #4C2B37;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover, .bulk-btn:hover {
+      background-color: #4C2B37;
+    }
+
+    .bulk-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      gap: 10px;
+    }
+
+    .bulk-actions input {
+      transform: scale(1.1);
+      margin-right: 5px;
+      accent-color:  #4C2B37;
+    }
+
+    footer {
+      background-color: #3A0519;
+      color:  white;
+      padding: 20px;
+      text-align: center;
+	   font-family: 'Playfair Display', serif;
+    }
+</style></head>
+<body>
+
+<header>
+  Your Cart
+  <div class="header-icons">
+    <div class="home-icon">
+      <a href="index.html" title="Back to Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path fill="white" d="M12 3L2 9h3v11h6V14h2v6h6V9h3z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="cart-container">
+  <div class="bulk-actions">
+    <label><input type="checkbox" id="select-all"> Select All</label>
+    <div>
+      <button class="bulk-btn" onclick="deleteSelected()">Delete Selected</button>
+      <button class="bulk-btn" onclick="buySelected()">Buy Selected</button>
+    </div>
+  </div>
+  <div id="cart-container"></div>
+</div>
+
+    <footer id="contact"><p>&copy; 2025 VÈDA FASHION | Contact us: vedafashion@gmail.com</p><div class="social-icons"><a href="https://www.instagram.com/veda.fashion02"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/veda.fashion.2025"><i class="fab fa-facebook-f"></i></a></div></footer>
+<script>
+  function renderCart() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const container = document.getElementById('cart-container');
+    container.innerHTML = '';
+
+    if (cart.length === 0) {
+      container.innerHTML = '<p>Your cart is empty.</p>';
+      document.querySelector('.bulk-actions').style.display = 'none';
+      return;
+    }
+
+    document.querySelector('.bulk-actions').style.display = 'flex';
+
+    cart.forEach((item, index) => {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'cart-item';
+      itemDiv.innerHTML = `
+        <input type="checkbox" class="item-checkbox" data-index="${index}">
+        <img src="${item.img}" alt="${item.name}">
+        <div class="item-details">
+          <h3>${item.name}</h3>
+          <p>${item.price}</p>
+        </div>
+        <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+      `;
+      container.appendChild(itemDiv);
+    });
+
+    document.getElementById('select-all').checked = false;
+  }
+
+  function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  function deleteSelected() {
+    const checkboxes = document.querySelectorAll('.item-checkbox');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const remaining = cart.filter((_, i) => !checkboxes[i].checked);
+    localStorage.setItem('cart', JSON.stringify(remaining));
+    renderCart();
+  }
+
+  function buySelected() {
+    const checkboxes = document.querySelectorAll('.item-checkbox');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const selectedItems = cart.filter((_, i) => checkboxes[i].checked);
+
+    if (selectedItems.length === 0) {
+      alert('No items selected to buy.');
+      return;
+    }
+
+    localStorage.setItem('cart', JSON.stringify(selectedItems));
+    window.location.href = 'checkout.html';
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    renderCart();
+    document.getElementById('select-all').addEventListener('change', function () {
+      const checkboxes = document.querySelectorAll('.item-checkbox');
+      checkboxes.forEach(cb => cb.checked = this.checked);
+    });
+  });
+window.addEventListener("DOMContentLoaded", () => localStorage.getItem("theme") === "light" && document.body.classList.add("light-mode"));</script>
+
+</body>
+</html>

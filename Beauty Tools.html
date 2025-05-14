@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beauty Tools - VÈDA FASHION</title>
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><link rel="stylesheet" href="social.css"><link rel="stylesheet" href="toggle.css"><style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #4C2B37;
+      color: #333;
+    }
+    header {
+      background-color: #3A0519;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+	  font-family: 'Lora', serif;
+    }
+    .home-icon a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+    }
+    .home-icon svg {
+      fill: white;
+      width: 100%;
+      height: 100%;
+      transition: fill 0.3s ease;
+      transform: scale(0.95);
+    }
+    .home-icon:hover svg { color: #EF88AD; transform: scale(1.15); text-shadow: 0 0 6px rgba(239, 136, 173, 0.5); transition: all 0.3s ease; }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 20px;
+    }
+    .product-card {
+      background-color: #3A0519;
+      border-radius: 10px;
+      width: 220px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 10px 15px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .product-info h2 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  min-height: 45px;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  font-weight: 400; 
+}
+
+     .price { font-weight: 600; margin: 10px 0; color:  white; text-align: center; font-family: 'Merriweather', serif; }
+    .btn-group {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+   .btn {
+  background-color: white;
+  border: none;
+  color: #3A0519;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: 'Merriweather', serif;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+    .btn:hover {
+      background-color:  #4C2B37;
+    }
+   footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #3A0519;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+}
+
+body.light-mode {
+  background-color: #FCE8EE; /* soft rose blush */
+  color: #3A0519;
+}
+
+body.light-mode header,
+body.light-mode footer {
+  background-color: #F6D7DF; /* muted mauve */
+  color: #3A0519;
+  box-shadow: 0 4px 12px rgba(170, 70, 100, 0.2);
+}
+
+body.light-mode .product-card {
+  background-color: #FFF0F4; /* soft warm white */
+  color: #3A0519;
+  box-shadow: 0 6px 12px rgba(200, 100, 130, 0.15);
+}
+
+body.light-mode .product-card:hover {
+  background-color: #F9CEDB; /* light pink hover */
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(239, 136, 173, 0.3);
+}
+
+body.light-mode .product-info h2,
+body.light-mode .price {
+  color: #3A0519;
+}
+
+body.light-mode .btn {
+  background-color: #EF88AD;
+  color: white;
+}
+
+body.light-mode .btn:hover {
+  background-color: #3A0519;
+  color: #EF88AD;
+}
+
+body.light-mode .home-icon svg {
+  fill: #3A0519;
+}
+
+body.light-mode .home-icon:hover svg {
+  fill: #EF88AD;
+  transform: scale(1.15);
+  text-shadow: 0 0 6px rgba(239, 136, 173, 0.5);
+}
+
+</style></head>
+<body>
+
+<header>
+  <h1>Beauty Tools</h1>
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <div class="home-icon">
+      <a href="index.html" title="Back to Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 3L2 9h3v11h6V14h2v6h6V9h3z"/>
+        </svg>
+      </a>
+    </div>
+    
+    <div class="home-icon">
+      <a href="cart.html" title="View Cart">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 
+            0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 
+            2-2-.9-2-2-2zM7.16 14.26l-.94-2.44L17 11l1.1 
+            2.59c.11.26.17.55.17.85 0 1.1-.9 2-2 
+            2H9.42c-.75 0-1.43-.41-1.76-1.06l-.5-1.12zM6.16 
+            9l1.1-2h11.45c.75 0 1.41.41 1.75 1.03l3.24 
+            6.5c.09.19.14.39.14.6 0 .83-.67 1.5-1.5 
+            1.5H8.53l-.94-2.44L6.16 9z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="product-grid">
+  <div class="product-card">
+   <a href="BlendBeauty.html">
+    <img src="BlendBeauty.jpg" alt="BlendBeauty">
+    <div class="product-info"></a>
+      <h2>BlendBeauty</h2>
+      <p class="price">8php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+<button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer id="contact"><p>&copy; 2025 VÈDA FASHION | Contact us: vedafashion@gmail.com</p><div class="social-icons"><a href="https://www.instagram.com/veda.fashion02"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/veda.fashion.2025"><i class="fab fa-facebook-f"></i></a></div></footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.product-card');
+        const name = card.querySelector('h2').innerText;
+        const price = card.querySelector('.price').innerText;
+        const img = card.querySelector('img').src;
+
+        const product = { name, price, img };
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert(`${name} added to cart!`);
+      });
+    });
+  });
+window.addEventListener("DOMContentLoaded", () => localStorage.getItem("theme") === "light" && document.body.classList.add("light-mode"));</script>
+
+
+</body>
+</html>
+
+<script>
+const buyNowButtons = document.querySelectorAll('.buy-now');
+
+buyNowButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.product-card');
+    const name = card.querySelector('h2').innerText;
+    const price = card.querySelector('.price').innerText;
+    const img = card.querySelector('img').src;
+
+    const product = [{ name, price, img }];
+    localStorage.setItem('cart', JSON.stringify(product));
+    window.location.href = 'checkout.html';
+  });
+});
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      document.body.classList.add("light-mode");
+    }
+  });
+window.addEventListener("DOMContentLoaded", () => localStorage.getItem("theme") === "light" && document.body.classList.add("light-mode"));</script>
+</body>
+</html> 

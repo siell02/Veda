@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Log In</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><link rel="stylesheet" href="social.css"><link rel="stylesheet" href="toggle.css"><style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #3A0519;
+      color: #fff;
+      padding: 30px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login {
+      background-color: #670D2F;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      background-color: #111;
+      color: white;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #4C2B37;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #EF88AD;
+    }
+
+    p {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .register-link {
+      color: #64b5f6;
+      text-decoration: underline;
+    }
+
+    .register-link:hover {
+      color: #90caf9;
+    }
+</style></head>
+<body>
+  <div class="login">
+    <form id="login-form">
+      <h1>Log In</h1>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+
+      <button type="submit">Login</button>
+
+      <p>
+        Don't have an account?
+        <a href="register.html" class="register-link">Register here</a>
+      </p>
+    </form>
+  </div>
+
+  <script>
+    window.onload = function () {
+      const adminAccount = {
+        username: 'hihi',
+        password: 'hihi@123',
+        name: 'Admin',
+        email: 'admin@veda.com',
+        role: 'admin'
+      };
+
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      if (!users.some(user => user.username === adminAccount.username)) {
+        users.push(adminAccount);
+        localStorage.setItem('users', JSON.stringify(users));
+      }
+    };
+
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+
+      const user = users.find(u => u.username === username && u.password === password);
+
+      if (user) {
+        localStorage.setItem('isLoggedIn', 'true');
+
+        localStorage.setItem('userData', JSON.stringify({
+          name: user.name || user.username,
+          email: user.email || '',
+          type: user.role || 'buyer'
+        }));
+
+        if (user.role === 'admin') {
+          window.location.href = 'admin-dashboard.html';
+        } else {
+          const redirectPath = localStorage.getItem('redirectAfterLogin');
+          localStorage.removeItem('redirectAfterLogin');
+          window.location.href = redirectPath || 'index.html';
+        }
+      } else {
+        alert("Invalid username or password.");
+      }
+    });
+  window.addEventListener("DOMContentLoaded", () => localStorage.getItem("theme") === "light" && document.body.classList.add("light-mode"));</script>
+</body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>VÈDA FASHION</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><link rel="stylesheet" href="social.css"><link rel="stylesheet" href="toggle.css"><style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color:  #4C2B37;
+    }
+
+header {
+  background-color: #3A0519;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+    .logo h1 {
+      font-size: 2.8rem;
+      font-family: 'Lora', serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.7rem;
+  font-family: 'Satisfy', cursive;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+}
+
+nav ul li a:hover {
+  color: #EF88AD;
+  text-shadow: 0 0 8px rgba(239, 136, 173, 0.6); 
+}
+
+nav ul li a:active {
+  transform: scale(0.95);
+}
+
+
+    .hero {
+  text-align: center;
+  padding: 110px 20px;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),  /* Slightly darker overlay */
+    url('bg.jpeg') center/cover no-repeat;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+
+	
+	.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1), transparent 40%),
+                    radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.05), transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero {
+  position: relative;
+  z-index: 1;
+}
+
+
+    .hero h2 {
+      font-size: 4.5rem;
+      line-height: 1.3;
+    }
+
+    .welcome {
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .veda {
+      font-family: 'Lora', serif;
+      font-size: 5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.8rem;
+      font-family: 'Dancing Script', cursive;
+      margin: 20px 0;
+    }
+
+    .search-bar {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .search-bar input[type="text"] {
+      padding: 14px 20px;
+      width: 320px;
+      max-width: 95%;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      font-size: 1.1rem;
+      font-family: 'Lora', serif;
+    }
+
+    .search-bar button {
+      padding: 14px 24px;
+      background-color: #3A0519;
+      color: white;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      font-family: 'Satisfy', cursive;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+   .search-bar button:hover {
+  background-color: #670D2F;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(239, 136, 173, 0.5);
+}
+
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    section h2 {
+      font-size: 3.7rem;
+      margin-bottom: 25px;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+    }
+
+    .product-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background-color: #3A0519;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 220px;
+      overflow: hidden;
+    }
+
+    .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(239, 136, 173, 0.4); /* rose glow */
+  background-color: #670D2F;
+}
+
+
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .card p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-family: 'Lora', serif;
+    }
+
+    footer {
+      background-color: #3A0519;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+    }
+
+    .hamburger-menu {
+      position: relative;
+    }
+
+    .hamburger-icon {
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+	
+	.hamburger-icon:hover {
+   color: #EF88AD;
+  transform: scale(1.15);
+  text-shadow: 0 0 6px rgba(239, 136, 173, 0.5);
+  transition: all 0.3s ease;
+}
+
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 35px;
+      background-color: #3A0519;
+      min-width: 160px;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+
+    .dropdown-menu a {
+      color: white;
+      padding: 12px 18px;
+      display: block;
+      font-family: 'Satisfy', cursive;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:hover {
+       color: #EF88AD;
+  transform: scale(1.15);
+  text-shadow: 0 0 6px rgba(239, 136, 173, 0.5);
+  transition: all 0.3s ease;
+    }
+
+    .profile-icon img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+      transition: transform 0.2s ease;
+    }
+
+    .profile-icon img:hover {
+      transform: scale(1.1);
+      border-color: #EF88AD;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+        max-width: 300px;
+      }
+
+      nav ul {
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      header {
+        padding: 15px 20px;
+      }
+
+      .hero h2 {
+        font-size: 3rem;
+      }
+
+      .veda {
+        font-size: 4rem;
+      }
+    }
+
+@keyframes elegantFade {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.logo h1 {
+  animation: slideFadeIn 1.5s ease-out;
+}
+
+
+.welcome {
+  font-family: 'Dancing Script', cursive;
+  animation: elegantFade 4s ease-in-out infinite;
+  display: inline-block;
+}
+
+.veda {
+  font-family: 'Lora', serif;
+  font-size: 5rem;
+  animation: elegantFade 4s ease-in-out infinite;
+  animation-delay: 1s;
+  display: inline-block;
+}
+
+.hero-subtitle {
+  font-size: 1.8rem;
+  font-family: 'Dancing Script', cursive;
+  margin: 20px 0;
+  animation: elegantFade 4s ease-in-out infinite;
+  animation-delay: 2s;
+  display: inline-block;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section h2 {
+  animation: fadeInUp 1.2s ease both;
+}
+nav ul li a i {
+  margin-right: 8px;
+  font-size: 1.2rem;
+
+}
+
+section h2 i {
+  margin-right: 10px;
+  color: #EF88AD;
+}
+
+#backToTopBtn {
+  position: fixed;
+  bottom: 35px;
+  right: 30px;
+  z-index: 999;
+  background-color: #EF88AD;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 12px 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: none;
+}
+
+#backToTopBtn:hover {
+  background-color: #4C2B37;
+  transform: scale(1.1);
+}
+
+#darkModeToggle:hover {
+  color: #EF88AD;
+  transform: scale(1.15);
+  text-shadow: 0 0 6px rgba(239, 136, 173, 0.5);
+  transition: all 0.3s ease;
+}
+
+body.light-mode {
+  background-color: #FCE8EE; /* soft rosy pink */
+  color: #3A0519;
+}
+
+body.light-mode header,
+body.light-mode footer {
+  background-color: #F6D7DF; /* muted mauve */
+  color: #3A0519;
+  box-shadow: 0 4px 12px rgba(170, 70, 100, 0.2);
+}
+
+body.light-mode nav ul li a,
+body.light-mode .dropdown-menu a {
+  color: #3A0519;
+}
+
+body.light-mode nav ul li a:hover,
+body.light-mode .dropdown-menu a:hover {
+  color: #EF88AD;
+  text-shadow: 0 0 5px rgba(239, 136, 173, 0.4);
+}
+
+body.light-mode .hamburger-icon {
+  color: #3A0519;
+}
+
+body.light-mode .hero {
+  background:
+    linear-gradient(rgba(255, 240, 245, 0.6), rgba(255, 240, 245, 0.6)),
+    url('bg.jpeg') center/cover no-repeat;
+  color: #3A0519;
+}
+
+body.light-mode .hero::after {
+  background-image: radial-gradient(circle at 25% 30%, rgba(239, 136, 173, 0.1), transparent 40%),
+                    radial-gradient(circle at 80% 60%, rgba(140, 60, 90, 0.05), transparent 40%);
+}
+
+body.light-mode .card {
+  background-color: #F9CEDB; /* soft rose card */
+  color: #3A0519;
+  box-shadow: 0 6px 12px rgba(190, 100, 130, 0.15);
+}
+
+body.light-mode .card:hover {
+  background-color: #F4B8C9; /* darker on hover */
+  box-shadow: 0 12px 24px rgba(239, 136, 173, 0.3);
+}
+
+body.light-mode .card p {
+  color: #3A0519;
+}
+
+body.light-mode .search-bar input[type="text"] {
+  background-color: #FFF0F4;
+  color: #3A0519;
+  border: 1px solid #EF88AD;
+  box-shadow: 0 2px 4px rgba(239, 136, 173, 0.1) inset;
+}
+
+body.light-mode .search-bar button {
+  background-color: #EF88AD;
+  color: white;
+}
+
+body.light-mode .search-bar button:hover {
+  background-color: #C7507E;
+}
+
+body.light-mode .dropdown-menu {
+  background-color: #FBD9E3;
+  box-shadow: 0 4px 12px rgba(160, 80, 100, 0.15);
+}
+
+body.light-mode .dropdown-menu a:hover {
+  background-color: transparent;
+  color: #EF88AD;
+}
+
+body.light-mode .profile-icon img {
+  border-color: #3A0519;
+}
+
+body.light-mode .profile-icon img:hover {
+  border-color: #EF88AD;
+}
+
+body.light-mode #backToTopBtn {
+  background-color: #3A0519;
+  color: white;
+}
+
+body.light-mode #backToTopBtn:hover {
+  background-color: #EF88AD;
+  color: #3A0519;
+}
+
+body.light-mode section {
+  color: #3A0519;
+}
+
+body.light-mode section h2 i {
+  color: #EF88AD;
+}
+
+body.light-mode .social-icons a {
+  color: #3A0519;
+}
+
+body.light-mode .social-icons a:hover {
+  color: #EF88AD;
+}
+
+
+:focus {
+  outline: 3px dashed #EF88AD;
+  outline-offset: 2px;
+}
+
+
+</style></head>
+<body>
+
+  <header>
+    <div class="logo">
+      <h1><img src="logo.jpg" alt="logo" height="70" width="70" />VÈDA FASHION</h1>
+    </div>
+    <nav>
+      <ul>
+       <li><a href="#shoes"><i class="fas fa-shoe-prints"></i> Shoes</a></li>
+<li><a href="#clothes"><i class="fas fa-tshirt"></i> Clothes</a></li>
+<li><a href="#makeup"><i class="fas fa-magic"></i> Makeup</a></li>
+<li><a href="aboutus.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+<li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+<li class="hamburger-menu">
+          <div class="hamburger-icon" onclick="toggleMenu()">&#9776;</div>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <a href="purchased.html">Purchased Items</a>
+            <a href="cart.html">Cart</a>
+            <a href="chatbox.html">Message Us</a>
+          </div>
+        </li>
+		<li>
+  <button id="darkModeToggle" title="Toggle Dark Mode" style="background:none; border:none; cursor:pointer; font-size:1.5rem; color:white;">
+    <i class="fas fa-adjust"></i>
+  </button>
+</li>
+
+        <li class="profile-icon">
+          <a href="profile.html">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2><span class="welcome">Welcome to</span><br><span class="veda">VÈDA FASHION</span></h2>
+    <p class="hero-subtitle">An inclusive e-commerce for every woman.</p>
+    <form class="search-bar" action="search.html" method="get">
+      <input type="text" name="query" placeholder="Search for products..." />
+      <button type="submit">Search</button>
+    </form>
+  </section>
+
+  <!-- Shoes -->
+  <section id="shoes">
+    <h2>Shoes</h2>
+    <div class="product-cards">
+      <a href="flat-shoes.html"><div class="card"><img src="https://i.pinimg.com/736x/2d/b1/ec/2db1ecf7b80cc3ac25e90d233274359d.jpg"/><p>Flat Shoes</p></div></a>
+      <a href="heels.html"><div class="card"><img src="https://i.pinimg.com/736x/53/fb/59/53fb5928d5ee466ef99c7a7bfff968e6.jpg"/><p>Heels</p></div></a>
+      <a href="sandals.html"><div class="card"><img src="https://i.pinimg.com/736x/c1/15/45/c11545cb8c11dc9f9bcecaaf2b019ad5.jpg"/><p>Sandals</p></div></a>
+      <a href="rubber-shoes.html"><div class="card"><img src="https://i.pinimg.com/736x/95/33/7e/95337e1c4f2f3ebcff0e22b6967d0639.jpg"/><p>Rubber Shoes</p></div></a>
+    </div>
+  </section>
+
+  <!-- Clothes -->
+  <section id="clothes">
+    <h2>Clothing</h2>
+    <div class="product-cards">
+      <a href="denim.html"><div class="card"><img src="https://i.pinimg.com/736x/84/56/f7/8456f7807d80c96106b1e80cc11f191a.jpg"/><p>Denim</p></div></a>
+      <a href="dress.html"><div class="card"><img src="https://i.pinimg.com/736x/07/02/d0/0702d0be65ab76824139512687f75add.jpg"/><p>Dress</p></div></a>
+      <a href="formal.html"><div class="card"><img src="https://i.pinimg.com/736x/fd/39/b1/fd39b1d79e80797e4798e273bc03c5d1.jpg"/><p>Formal</p></div></a>
+      <a href="sets.html"><div class="card"><img src="https://i.pinimg.com/736x/61/ce/d7/61ced72151d4f4215fcdd27b4617673e.jpg"/><p>Sets</p></div></a>
+      <a href="casual.html"><div class="card"><img src="https://i.pinimg.com/736x/2f/63/c7/2f63c7d12c8f688ac10f94c5de7412cf.jpg"/><p>Casual</p></div></a>
+      <a href="trousers.html"><div class="card"><img src="https://i.pinimg.com/736x/f0/bd/0d/f0bd0deebc4d11e902f532ada30bcb1f.jpg"/><p>Trousers</p></div></a>
+    </div>
+  </section>
+
+  <!-- Makeup -->
+  <section id="makeup">
+    <h2>Makeup</h2>
+    <div class="product-cards">
+      <a href="Beauty Tools.html"><div class="card"><img src="https://i.pinimg.com/736x/36/be/d7/36bed73b76c8cf0f3966ffb12422a6ea.jpg"/><p>Beauty Tools</p></div></a>
+      <a href="Eye Makeup.html"><div class="card"><img src="https://i.pinimg.com/736x/30/ac/de/30acde4cb9a32b8313a5705d69aafe76.jpg"/><p>Eye Makeup</p></div></a>
+      <a href="Makeup Sets.html"><div class="card"><img src="https://i.pinimg.com/736x/b9/72/96/b97296e16aea47919107b3b6817cbebd.jpg"/><p>Makeup Sets</p></div></a>
+      <a href="Face Makeup.html"><div class="card"><img src="https://i.pinimg.com/736x/2f/11/6f/2f116f755dedaf46a3ef8d0721f37b9d.jpg"/><p>Face Makeup</p></div></a>
+    </div>
+  </section>
+
+    <footer id="contact"><p>&copy; 2025 VÈDA FASHION | Contact us: vedafashion@gmail.com</p><div class="social-icons"><a href="https://www.instagram.com/veda.fashion02"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/veda.fashion.2025"><i class="fab fa-facebook-f"></i></a></div></footer>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("dropdownMenu");
+      const icon = document.querySelector(".hamburger-icon");
+
+      if (!icon.contains(event.target) && !menu.contains(event.target)) {
+        menu.style.display = "none";
+      }
+    });
+
+    document.querySelector(".hamburger-icon").addEventListener("keydown", function(event) {
+      if (event.key === "Enter" || event.key === " ") {
+        toggleMenu();
+        event.preventDefault();
+      }
+    });
+	
+	
+window.onscroll = function () {
+  const btn = document.getElementById("backToTopBtn");
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+
+const toggleBtn = document.getElementById('darkModeToggle');
+const body = document.body;
+
+
+if (localStorage.getItem('theme') === 'light') {
+  body.classList.add('light-mode');
+}
+
+toggleBtn.addEventListener('click', () => {
+  body.classList.toggle('light-mode');
+  localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+});
+
+
+  window.addEventListener("DOMContentLoaded", () => localStorage.getItem("theme") === "light" && document.body.classList.add("light-mode"));</script>
+
+<button onclick="scrollToTop()" id="backToTopBtn" title="Back to Top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+</body>
+</html>
